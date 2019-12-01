@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.645
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordFrequencyDistribution", "WordFrequencyDistribution\WordFrequencyDistribution.csproj", "{B112D8EA-C78C-4447-8218-F4F530445F75}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B112D8EA-C78C-4447-8218-F4F530445F75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B112D8EA-C78C-4447-8218-F4F530445F75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B112D8EA-C78C-4447-8218-F4F530445F75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B112D8EA-C78C-4447-8218-F4F530445F75}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5451D75D-BF4E-43D2-81F6-17778D5B049A}
+	EndGlobalSection
+EndGlobal
