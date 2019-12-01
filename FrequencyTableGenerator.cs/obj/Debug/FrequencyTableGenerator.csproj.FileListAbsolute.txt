@@ -1,0 +1,7 @@
+C:\Users\Jack\Documents\Andrew\Goals\Computational Linguistics\BasicTokeniser\BasicTokeniser\obj\Debug\FrequencyTableGenerator.csprojAssemblyReference.cache
+C:\Users\Jack\Documents\Andrew\Goals\Computational Linguistics\BasicTokeniser\BasicTokeniser\obj\Debug\FrequencyTableGenerator.csproj.CoreCompileInputs.cache
+C:\Users\Jack\Documents\Andrew\Goals\Computational Linguistics\BasicTokeniser\BasicTokeniser\bin\Debug\FrequencyTableGenerator.exe.config
+C:\Users\Jack\Documents\Andrew\Goals\Computational Linguistics\BasicTokeniser\BasicTokeniser\bin\Debug\FrequencyTableGenerator.exe
+C:\Users\Jack\Documents\Andrew\Goals\Computational Linguistics\BasicTokeniser\BasicTokeniser\bin\Debug\FrequencyTableGenerator.pdb
+C:\Users\Jack\Documents\Andrew\Goals\Computational Linguistics\BasicTokeniser\BasicTokeniser\obj\Debug\FrequencyTableGenerator.exe
+C:\Users\Jack\Documents\Andrew\Goals\Computational Linguistics\BasicTokeniser\BasicTokeniser\obj\Debug\FrequencyTableGenerator.pdb
