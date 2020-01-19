@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace WordFrequencyDistribution
 {
+    /// <summary>
+    /// Contains methods for accessing external files.
+    /// </summary>
     class TextFileReader
     {
         static public string[] _fileTextLines { get; private set; }

@@ -8,17 +8,20 @@ namespace WordFrequencyDistribution
 {
     class Program
     {
-        static private string _filePath = "C:\\Users\\Jack\\Desktop\\";
+        static private string _fileInputPath = "C:\\Users\\Jack\\Desktop\\";
+        static private string _fileOutputPath = "C:\\Users\\Jack\\Desktop\\out.xml";
         static private string _fileName = "test.txt";
 
         static void Main(string[] args)
         {
             System.Console.WriteLine("Starting program");
 
-            TextFileReader.ReadFile(_filePath + _fileName);
+            TextFileReader.ReadFile(_fileInputPath + _fileName);
 
-            Tokeniser.Tokenise(TextFileReader._fileTextLines);
-            Tokeniser.PrintTokens();
+            Tokeniser myTokeniser = new Tokeniser(TextFileReader._fileTextLines);
+
+            myTokeniser.Tokenise();
+            myTokeniser.ExportTokensInXml(_fileOutputPath);
 
             // Pauses the console so console-printed messages are perceptible.
             Console.ReadKey();

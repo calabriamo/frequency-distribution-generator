@@ -1,49 +1,96 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Xml;
 using System.Threading.Tasks;
+
 
 namespace WordFrequencyDistribution
 {
+    /// <summary>
+    /// Contains behaviour for converting plaintext to structured tokens.
+    /// </summary>
     class Tokeniser
     {
-        static private List<string> _tokenArray;
+        private string _writeFileLocation = "C:\\Users\\Jack\\Desktop\\";
 
-        static public void Tokenise(string[] lineArray)
+        private List<string> _rawLineList;
+        static private List<string> _tokenList;
+
+        private XmlDocument _tokenXMLDocument;
+
+        public Tokeniser(string[] lineArray)
         {
-            _tokenArray = new List<string>();
+
+            _tokenXMLDocument = new XmlDocument();
+            _tokenList = new List<string>();
+
+            XmlDeclaration declaration =
+                _tokenXMLDocument.CreateXmlDeclaration("1.0", "UTF-8", null);
+
+            XmlElement root = _tokenXMLDocument.DocumentElement;
+
+            _tokenXMLDocument.InsertBefore(declaration, root);
+
+            XmlElement bodyNode = _tokenXMLDocument.CreateElement("body");
+            XmlElement tokensNode = _tokenXMLDocument.CreateElement("tokens");
+            XmlElement tokenNode = _tokenXMLDocument.CreateElement("token");
+
+            _tokenXMLDocument.AppendChild(bodyNode);
+            bodyNode.AppendChild(tokensNode);
+            tokensNode.AppendChild(tokenNode);
+
+            _rawLineList = lineArray.ToList<string>();
 
             foreach (string line in lineArray)
+            {
+                // :TODO: Andrew Memma 10-Dec-2019
+                // Validation to be enacted on each incoming raw line?
+
+                _rawLineList.Add(line);
+            }
+        }
+
+        public void Tokenise()
+        {
+            foreach (string line in _rawLineList)
             {
                 Tokenise(line);
             }
         }
 
-        static private void Tokenise(string fileLine)
+        private void Tokenise(string fileLine)
         {
+            XmlNode nodes = _tokenXMLDocument.SelectSingleNode("//tokens");
+
             foreach (string token in fileLine.Split(' '))
             {
-                _tokenArray.Add(token);
+                XmlNode newTokenNode = _tokenXMLDocument.CreateNode("element", "token", string.Empty);
+                newTokenNode.InnerText = token;
+                //_tokenList.Add(token);
+                nodes.AppendChild(newTokenNode);
             }
         }
 
-        static public void PrintTokens()
+        public void PrintTokens()
         {
-            UInt16 indentationLevel = 0;
-
-            WriteXMLNode("tokens", indentationLevel++, true);
-            Console.Write("\n");
-
-            for (int i = 0; i < _tokenArray.Count; i++)
+            using (var stringWriter = new StringWriter())
+            using (var xmlTextWriter = XmlWriter.Create(stringWriter))
             {
-                WriteXMLNode("token", indentationLevel, true);
-                Console.Write(_tokenArray[i]);
-                WriteXMLNode("token", 0, false);
-                Console.Write("\n");
+                _tokenXMLDocument.WriteTo(xmlTextWriter);
+                xmlTextWriter.Flush();
+                Console.Write(stringWriter.GetStringBuilder().ToString());
             }
-            WriteXMLNode("tokens", --indentationLevel, false);
+        }
 
+        public void ExportTokensInXml(string writeFileLocation)
+        {
+            using (StreamWriter output = File.CreateText(writeFileLocation))
+            {
+                output.WriteLine(_tokenXMLDocument.OuterXml);
+            }
         }
 
         static private void WriteXMLNode(string element, UInt16 indentationLevel, bool nodeStart)
