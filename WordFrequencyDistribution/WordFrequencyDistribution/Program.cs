@@ -24,7 +24,7 @@ namespace WordFrequencyDistribution
             myTokeniser.ExportTokensInXml(_fileOutputPath);
 
             // Pauses the console so console-printed messages are perceptible.
-            Console.ReadKey();
+            //Console.ReadKey();
         }
     }
 }
